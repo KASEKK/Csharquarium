@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Csharquarium.Models
 {
-    public class Algue
+    public class Algue : EtresVivants
     {
-
+        public int Age { get; private set; }
+        public Algue(int age) : base(age)
+        {
+            Age = age;
+        }
     }
 }

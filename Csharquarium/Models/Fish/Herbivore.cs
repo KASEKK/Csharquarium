@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Csharquarium.Models.Poissons
 {
-    public class Poisson
+    public class Herbivore : Poisson
     {
-        public string Nom { get; set; }
-        public string Sexe { get; set; }
+        public TypeHerbivore Type { get; set; }
     }
 }

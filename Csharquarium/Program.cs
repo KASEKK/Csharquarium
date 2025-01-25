@@ -1,4 +1,5 @@
 ﻿using Csharquarium.Models;
+using Csharquarium.Models.Poissons;
 
 Aquarium a = new Aquarium();
 int AfficherMenu()
@@ -18,16 +19,17 @@ int choix = -1;
 while (choix != 0) { 
 
     if (choix == 1)
-        {
-        
+    {
+        a.AjouterPoisson(new Poisson());
     }
-    else if (choix == 2)
-        {
-
-    }
-    else if (choix == 3)
-        {
-        
-    }
+    //else if (choix == 2)
+    //    {
+    //    a.AjouterAlgue(new algue);
+    //}
+    //else if (choix == 3)
+    //    {
+    //    a.PasserJournee();
+    //}
 }
 
+Console.WriteLine();

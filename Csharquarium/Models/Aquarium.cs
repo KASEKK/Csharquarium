@@ -11,30 +11,38 @@ namespace Csharquarium.Models
 {
     public class Aquarium
     {
-        public List<Poisson> Poissons { get; set; }
-        public List<Algue> Algues { get; set; }
-        public void AjouterPoisson(Poisson poisson)
+
+        private List<EtresVivants> _etreVivants;
+
+        public Aquarium()
         {
-            Poissons.Add(poisson);
+            _etreVivants = new List<EtresVivants>();
         }
 
-        public void AjouterAlgue(Algue algue)
+        public Aquarium(IEnumerable<EtresVivants> poissons)
         {
-            Algues.Add(algue);
+            _etreVivants = new List<EtresVivants>(poissons);
         }
 
-        //public void PasserJournee()
-        //{
-        //    foreach (Poisson poisson in Poissons)
-        //    {
-        //        poisson.Manger();
-        //    }
-        //    foreach (Algue algue in Algues)
-        //    {
-        //        algue.Pousser();
-        //    }
-        //}
+        public void Ajouter(EtresVivants etreVivant)
+        {
+            _etreVivants.Add(etreVivant);
+        }
 
+        public void AfficherEtreVivant()
+        {
+            foreach (EtresVivants etreVivant in _etreVivants)
+            {
+                if (etreVivant is Algue)
+                {
+                    Console.WriteLine($"Algue : Age => {etreVivant}");
+                }
+                else if (etreVivant is Poisson poisson)
+                {
+                    Console.WriteLine($"Poisson nommé {poisson.Nom} agé de {poisson.Age}");
+                }
+            }
 
+        }
     }
 }
