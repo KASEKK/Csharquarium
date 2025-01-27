@@ -1,7 +1,11 @@
 ﻿using Csharquarium.Models;
 using Csharquarium.Models.Poissons;
 
+
+// Création de l'aquarium
 Aquarium a = new Aquarium();
+
+// Fonction pour afficher le menu
 int AfficherMenu()
 { 
 Console.WriteLine("Bienvenue dans le Csharquarium !");
@@ -15,7 +19,7 @@ return Convert.ToInt32(Console.ReadLine());
 }
 
 int choix = -1;
-
+// Boucle pour afficher le menu et lancer la vie de l'aquarium
 while (choix != 0) { 
 
     if (choix == 1)

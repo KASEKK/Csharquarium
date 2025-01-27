@@ -11,24 +11,28 @@ namespace Csharquarium.Models
 {
     public class Aquarium
     {
-
+        // Liste d'êtres vivants
         private List<EtresVivants> _etreVivants;
 
+        // Constructeur
         public Aquarium()
         {
             _etreVivants = new List<EtresVivants>();
         }
 
+        // Constructeur avec paramètre
         public Aquarium(IEnumerable<EtresVivants> poissons)
         {
             _etreVivants = new List<EtresVivants>(poissons);
         }
 
+        // Ajouter un être vivant FONCTION
         public void Ajouter(EtresVivants etreVivant)
         {
             _etreVivants.Add(etreVivant);
         }
 
+        //Afficher les êtres vivants FONCTION
         public void AfficherEtreVivant()
         {
             foreach (EtresVivants etreVivant in _etreVivants)

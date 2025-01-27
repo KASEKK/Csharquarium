@@ -10,12 +10,14 @@ namespace Csharquarium.Models
 {
     public class EtresVivants
     {
+        // Propriétés Age et PV
         public EtresVivants(int age = 0)
         {
             int PV = 10;
             int Age = age;
         }
-      
+
+        // Méthode PasserLeTemps
         public void PasserLeTemps()
         {
             bool Journee = true;
