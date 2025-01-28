@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,6 @@ namespace Csharquarium.Models
         public Aquarium()
         {
             _etreVivants = new List<EtresVivants>();
-        }
-
-        // Constructeur avec paramètre
-        public Aquarium(IEnumerable<EtresVivants> poissons)
-        {
-            _etreVivants = new List<EtresVivants>(poissons);
         }
 
         // Ajouter un être vivant FONCTION
@@ -48,5 +43,17 @@ namespace Csharquarium.Models
             }
 
         }
-    }
+
+        // Méthode PasserLeTemps
+
+        Random rdn = new Random();
+        
+            List<Poisson> poissons = EtresVivants.OfType<Poisson>().ToList();
+            List<Algue> algues = EtresVivants.OfType<Algue>().ToList();
+
+            foreach (Poisson poisson in poissons)
+            {
+                poisson.PasserLeTemps();
+            }
+ 
 }

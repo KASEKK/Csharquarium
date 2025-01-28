@@ -16,10 +16,24 @@ namespace Csharquarium.Models.Poissons
         }
 
         // Constructeur avec paramètres
-        public Herbivore(string nom, char sexe, int age)
-            : base(nom, sexe, age)
+        public Carnivore(string nom, char sexe, int age)
+            : base(nom, sexe, age, )
         {
 
         }
+
+        public void mangerPoisson (Poisson poisson, int pV)
+        {
+            if (this.PV > 5)
+                return;
+            
+            Console.WriteLine($"Le poisson {Nom} mange le poisson {poisson.Nom}");
+            this.PV += 5;
+            poisson.PV -= 4;
+            Console.WriteLine($"PV {Nom} : {this.PV}");
+            Console.WriteLine($"PV {poisson.Nom} : {poisson.PV}");
+        }
     }
 }
+
+

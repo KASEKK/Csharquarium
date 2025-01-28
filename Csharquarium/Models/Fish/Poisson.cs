@@ -11,21 +11,13 @@ namespace Csharquarium.Models.Poissons
         // Propriétés Nom, Sexe et Age
         public string Nom { get; }
         public char Sexe { get; private set; }
-        public int Age { get; private set; }
+        
 
         // Constructeur
         public Poisson(string nom, char sexe)
         {
             Nom = nom;
             Sexe = sexe;
-        }
-
-        // Constructeur avec paramètres
-        public Poisson(string nom, char sexe, int age) : base(age)
-        {
-            Nom = nom;
-            Sexe = sexe;
-            Age = age;
         }
     }
 
