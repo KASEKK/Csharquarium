@@ -20,5 +20,21 @@ namespace Csharquarium.Models
             PV = 10;
             Age = 0;
         }
+
+        public virtual void Grandir()
+        {
+            Age++;
+            if (Age > 20)
+            {
+                Mourir();
+            }
+        }
+
+        public void Mourir()
+        {
+            PV = 0;
+            Console.WriteLine($"{this.GetType().Name} est mort de vieillesse.");
+        }
     }
+    
 }

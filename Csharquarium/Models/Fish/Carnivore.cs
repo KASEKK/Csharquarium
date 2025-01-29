@@ -3,26 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Csharquarium.Models.Fish;
 
 namespace Csharquarium.Models.Poissons
 {
     public class Carnivore : Poisson
     {
-        // Constructeur
-        public Carnivore(string nom, char sexe)
-       : base(nom, sexe)
-        {
-
-        }
+        public EspeceCarnivoreEnum Espece { get; set; }
 
         // Constructeur avec paramètres
-        public Carnivore(string nom, char sexe, int age)
-            : base(nom, sexe, age, )
+        public Carnivore(EspeceCarnivoreEnum espece, string nom, char sexe) : base(nom, sexe)
         {
-
+            Espece = espece;
         }
 
-        public void mangerPoisson (Poisson poisson, int pV)
+        public void mangerPoisson (Poisson poisson)
         {
             if (this.PV > 5)
                 return;

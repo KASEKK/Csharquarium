@@ -27,6 +27,12 @@ namespace Csharquarium.Models
             _etreVivants.Add(etreVivant);
         }
 
+        // Ajouter une algue FONCTION
+        public void AjouterAlgue(Algue algue)
+        {
+            _etreVivants.Add(algue);
+        }
+
         //Afficher les êtres vivants FONCTION
         public void AfficherEtreVivant()
         {
@@ -34,26 +40,63 @@ namespace Csharquarium.Models
             {
                 if (etreVivant is Algue)
                 {
-                    Console.WriteLine($"Algue : Age => {etreVivant}");
+                    Console.WriteLine($"Algue : Age => {etreVivant.Age}");
+                    Console.WriteLine("\n");
                 }
                 else if (etreVivant is Poisson poisson)
                 {
                     Console.WriteLine($"Poisson nommé {poisson.Nom} agé de {poisson.Age}");
+                    Console.WriteLine("\n");
                 }
             }
+
+           
 
         }
 
         // Méthode PasserLeTemps
+        public void PasserLeTemps()
+        {
+            Random rdn = new Random();
 
-        Random rdn = new Random();
-        
-            List<Poisson> poissons = EtresVivants.OfType<Poisson>().ToList();
-            List<Algue> algues = EtresVivants.OfType<Algue>().ToList();
+            List<Poisson> poissons = _etreVivants.OfType<Poisson>().ToList();
+            List<Algue> algues = _etreVivants.OfType<Algue>().ToList();
 
+            // Mettre à jour les algues
+            foreach (Algue algue in algues)
+            {
+                algue.Grandir();
+            }
+
+            // Mettre à jour les poissons
             foreach (Poisson poisson in poissons)
             {
-                poisson.PasserLeTemps();
+                poisson.PV -= 1; // Les poissons perdent 1 PV chaque tour
+
+                if (poisson.PV <= 5)
+                {
+                    if (poisson is Herbivore herbivore)
+                    {
+                        // Les herbivores mangent des algues
+                        if (algues.Any())
+                        {
+                            Algue algueAManger = algues[rdn.Next(algues.Count)];
+                            herbivore.mangerAlgue(algueAManger);
+                        }
+                    }
+                    else if (poisson is Carnivore carnivore)
+                    {
+                        List<Poisson> poissonsMangeables = new List<Poisson>();
+                        poissonsMangeables.AddRange(poissons);
+                        poissonsMangeables.Remove(carnivore);
+
+                        Poisson miskine = poissonsMangeables[rdn.Next(0, poissonsMangeables.Count())];
+
+                        carnivore.mangerPoisson(miskine);
+                    }
+                    }
+                }
             }
- 
-}
+        }
+    }
+
